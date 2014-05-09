@@ -1,0 +1,33 @@
+{
+    "name": "shop",
+    "version": "0.1.0",
+    "authors": [
+        "Oleksandr Bondarchuk <alex.coockoo@gmail.com>"
+    ],
+    "description": "Online shop",
+    "main": "resources/javascripts/main.js",
+    "moduleType": [
+        "amd"
+    ],
+    "keywords": [
+        "shop",
+        "online",
+        "project"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "resources/bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "jquery": "2.1.1",
+        "requirejs": null,
+        "requirejs-text": null,
+        "backbone": "1.1.2"
+    }
+}
