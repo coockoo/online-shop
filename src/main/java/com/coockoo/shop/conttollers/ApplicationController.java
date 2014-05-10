@@ -13,19 +13,14 @@ import com.coockoo.shop.services.ProductService;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/test")
 public class ApplicationController {
 	
 	@Autowired
 	ProductService productService;
 
-	//Returns main page of the project
-	@RequestMapping(value = "", method = RequestMethod.GET, produces="text/html")
-	public String index() {
-		return "index";
-	}
-
-	@RequestMapping(value = "test", method = RequestMethod.GET, produces="application/json")
+	// /api/test
+	@RequestMapping(value = "", method = RequestMethod.GET, produces="application/json")
 	public @ResponseBody
 	List<Product> getTest () {
 		return productService.getAllProducts();

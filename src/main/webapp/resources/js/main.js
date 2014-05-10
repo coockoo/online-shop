@@ -23,9 +23,9 @@ require.config({
 
 require([
     'router'
-    ],
+],
     function (Router) {
-        console.log('in main');
-        new Router();
+        var router = new Router();
     }
 );
+

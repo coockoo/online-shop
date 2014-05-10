@@ -6,22 +6,31 @@ define([
     'backbone',
     'controllers/product'
     ], function (Backbone, ProductController) {
-        var Router = Backbone.Router.extend({
+        var Router;
+        Router = Backbone.Router.extend({
             routes: {
+                '!/products': 'showProducts',
                 '!/': 'showRoot',
-                '!/products': 'showProducts'
+                '*actions': 'error'
+            },
+            showRoot: function () {
+                console.log('root');
+            },
+            error: function () {
+                console.log('page not found');
             },
             initialize: function () {
                 var productController = new ProductController();
-                this.on('route:showRoot', function () {
-                });
 
                 this.on('route:showProducts', function () {
+                    console.log('router:products');
                     productController.showProducts();
-                })
+                });
+
+                Backbone.history.start({ root: '/shop/'});
             }
         });
-        Backbone.history.start();
+
 
         return Router;
 

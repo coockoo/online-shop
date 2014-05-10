@@ -3,13 +3,17 @@
  */
 
 define([
-    'backbone'
-    ], function (Backbone) {
-        var Product;
-        Product = Backbone.Model.extend({
-
+    'backbone',
+    'models/product'
+    ], function (Backbone, Product) {
+        var ProductCollection;
+        ProductCollection = Backbone.Collection.extend({
+            url: function () {
+                return 'http://localhost:8080/shop/api/products';
+            },
+            model: Product
         });
-        return Product;
+        return ProductCollection;
 
     }
 );
