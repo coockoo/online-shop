@@ -6,7 +6,10 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	<bean id="productDAO" class="com.coockoo.shop.dao.ProductDAO"></bean>
+	<bean id="orderDAO" class="com.coockoo.shop.dao.OrderDAO"></bean>
+	
 	<bean id="productService" class="com.coockoo.shop.services.ProductService"></bean>
+	<bean id="orderService" class="com.coockoo.shop.services.OrderService"></bean>
 	
 	<import resource="data.xml"/>
 		

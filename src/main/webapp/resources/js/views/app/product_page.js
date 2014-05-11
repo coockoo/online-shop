@@ -4,8 +4,9 @@
 
 define([
     'backbone',
+    'underscore',
     'text!../../../templates/app/productPage.ejs'
-    ], function (Backbone, template) {
+    ], function (Backbone, _, template) {
         var ProductPageView;
         ProductPageView = Backbone.View.extend({
 

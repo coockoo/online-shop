@@ -21,7 +21,7 @@ define([
             };
 
             this.showProduct = function (id) {
-                require(['models/product', 'views/appView', 'views/product/model', 'views/app/productPage'],
+                require(['models/product', 'views/appView', 'views/product/model', 'views/app/product_page'],
                     function (Product, appView, ProductView, ProductPageView) {
                     var product = new Product({id: id});
                     product.fetch({

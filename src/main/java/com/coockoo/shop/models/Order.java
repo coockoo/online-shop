@@ -1,7 +1,15 @@
 package com.coockoo.shop.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,11 +34,37 @@ public class Order extends BaseEntity {
 	@Column(name="email")
 	private String email;
 	
+	@Column(name="phone")
+	private String phone;
+
 	@Column(name="checked")
 	private Boolean checked;
 	
 	@Column(name="done")
 	private Boolean done;
+	
+	private Set<Product> products = new HashSet<Product>(0);
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "cart", joinColumns = { 
+			@JoinColumn (name = "order_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "product_id", 
+					nullable = false, updatable = false) })
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 	public String getDistrict() {
 		return district;
