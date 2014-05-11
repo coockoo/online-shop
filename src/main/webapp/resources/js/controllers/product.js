@@ -7,20 +7,37 @@ define([
         function ProductController () {
 
             this.showProducts = function () {
-                //TODO: remove jquery from here
-                require(['jquery','collections/product', 'views/product/collection'], function ($, ProductCollection, ProductCollectionView) {
+                require(['collections/product', 'views/appView', 'views/product/collection'],
+                    function (ProductCollection, appView, ProductCollectionView, ProductsPageView) {
                     var productCollection = new ProductCollection();
                     productCollection.fetch({
                         success:  function (collection) {
                             var view = new ProductCollectionView({collection: collection});
-                            $('.container').html(view.render().el);
-                            console.log(collection);
+                            appView.setContainerView(view);
                         }
                     });
 
                 })
+            };
 
-            }
+            this.showProduct = function (id) {
+                require(['models/product', 'views/appView', 'views/product/model', 'views/app/productPage'],
+                    function (Product, appView, ProductView, ProductPageView) {
+                    var product = new Product({id: id});
+                    product.fetch({
+                        success: function (model) {
+                            var productPage = new ProductPageView();
+                            var view = new ProductView({model: model});
+                            productPage.setContainerView(view);
+                            appView.setContainerView(productPage);
+                        }
+
+                    })
+
+                })
+
+
+            };
 
 
         }

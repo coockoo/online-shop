@@ -22,9 +22,10 @@ require.config({
 });
 
 require([
+    'config',
     'router'
 ],
-    function (Router) {
+    function (config, Router) {
         var router = new Router();
     }
 );

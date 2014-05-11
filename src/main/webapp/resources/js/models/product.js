@@ -7,8 +7,7 @@ define([
     ], function (Backbone) {
         var Product;
         Product = Backbone.Model.extend({
-            url: function () {
-                console.log(this.document);
+            urlRoot: function () {
                 return 'http://localhost:8080/shop/api/products';
             }
         });

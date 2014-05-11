@@ -22,6 +22,17 @@ public class Product extends BaseEntity {
 	
 	@Column (name="rating")
 	private Integer rating;
+	
+	@Column (name="image")
+	private String image;
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public Integer getQuantity() {
 		return quantity;
