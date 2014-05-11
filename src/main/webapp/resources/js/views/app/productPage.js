@@ -11,6 +11,14 @@ define([
 
             template: _.template(template),
             containerView: null,
+            events: {
+                'click a.add-to-cart': 'addToCart'
+            },
+            addToCart: function (e) {
+                var model = this.containerView.model;
+                Backbone.Events.trigger('cart:add', model);
+                e.preventDefault();
+            },
             setContainerView: function (view) {
                 this.containerView = view;
             },

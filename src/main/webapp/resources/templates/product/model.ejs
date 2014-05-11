@@ -1,10 +1,9 @@
 <% if (model.get('image') != null) {%>
-    <img src="<%= model.get('image')%>" alt="image of product"/>
+    <img src="<%= model.get('image')%>" alt="image of product" onError="this.onerror=null;this.src='resources/images/default.png';"/>
 <% } else { %>
     <img src="resources/images/default.png" alt="image of product"/>
 <% } %>
 <h1><a href="#!/products/<%= model.get('id')%>"><%= model.get('name') %></a></h1>
 <p><%= model.get('description')%></p>
 <span class="price">Price: <%= model.get('price') %></span>
-<span class="quantity">Quantity: <%= model.get('quantity') %></span>
 <span class="rating">Rating: <%= model.get('rating')%></span>

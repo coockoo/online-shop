@@ -4,10 +4,13 @@
 
 define([
     'backbone',
-    'controllers/product'
-    ], function (Backbone, ProductController) {
+    'controllers/product',
+    'controllers/cart'
+    ], function (Backbone, ProductController, CartController) {
         var Router;
         var productController = new ProductController();
+        var cartController = new CartController();
+        Backbone.Events.on('cart:add', cartController.add);
         Router = Backbone.Router.extend({
             routes: {
                 '!/products(/)': 'showProducts',
