@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.coockoo.shop.models.Order;
 import com.coockoo.shop.services.OrderService;
@@ -18,8 +19,10 @@ public class OrderController {
 	OrderService orderService;
 
 	@RequestMapping(value = "", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
-	public Order createOrder (@RequestBody Order order) {
-		return orderService.createOrder(order);
+	public @ResponseBody
+	Order createOrder (@RequestBody Order order) {
+		Order newOrder = orderService.createOrder(order);
+		return newOrder;
 	}
 	
 

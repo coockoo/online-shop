@@ -21,10 +21,13 @@ define([
             };
 
             this.showCart = function () {
-                require(['views/app/cart_page', 'views/product/collection', 'views/appView'],
-                    function (CartPageView, ProductCollectionView, appView) {
+                require(['views/app/cart_page', 'views/product/collection', 'views/order/model', 'views/appView', 'models/order'],
+                    function (CartPageView, ProductCollectionView, OrderView, appView, Order) {
                     var cartPage = new CartPageView();
                     var view = new ProductCollectionView({collection: cart});
+                    var order = new Order({products: cart});
+                    var orderView = new OrderView({model: order});
+                    cartPage.setOrderView(orderView);
                     cartPage.setContainerView(view);
                     appView.setContainerView(cartPage);
                 });

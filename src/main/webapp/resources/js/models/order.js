@@ -10,7 +10,16 @@ define([
         var Order;
         Order = Backbone.Model.extend({
             initialize: function (options) {
-                this.products = new ProductCollection(options.products);
+                this.products = new ProductCollection(options?options.products?options.products:[]:[]);
+            },
+            defaults: {
+                district: "",
+                city: "",
+                street: "",
+                house: "",
+                apartment: "",
+                email: "",
+                phone: ""
             },
             urlRoot: function () {
                 return config.getUrlRoot() + '/orders';

@@ -12,28 +12,21 @@ define([
 
             template: _.template(template),
             containerView: null,
-            events: {
-                'click a.order': 'order'
-            },
-            order: function (e) {
-                var data = $('form').serializeObject();
-                for (var key in data) {
-                    if (data[key] == null) {
-                        alert('please, fill all fields');
-                    }
-                }
-                Backbone.Events.trigger('order:send', {
-                    products: this.containerView.collection
-                });
-                e.preventDefault();
-            },
+            orderView: null,
+
             setContainerView: function (view) {
                 this.containerView = view;
+            },
+            setOrderView: function (view) {
+                this.orderView = view;
             },
             render: function () {
                 this.$el.html(this.template({isFull: this.containerView.collection.length}));
                 if (this.containerView != null) {
                     this.$el.find('.product-container').html(this.containerView.render().$el);
+                }
+                if (this.orderView != null) {
+                    this.$el.find('.order-container').html(this.orderView.render().$el);
                 }
                 return this;
             }

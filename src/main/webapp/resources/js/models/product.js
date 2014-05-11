@@ -3,12 +3,13 @@
  */
 
 define([
-    'backbone'
-    ], function (Backbone) {
+    'backbone',
+    'config'
+    ], function (Backbone, config) {
         var Product;
         Product = Backbone.Model.extend({
             urlRoot: function () {
-                return 'http://localhost:8080/shop/api/products';
+                return config.getUrlRoot() + '/products';
             }
         });
         return Product;

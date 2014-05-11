@@ -38,10 +38,10 @@ public class Order extends BaseEntity {
 	private String phone;
 
 	@Column(name="checked")
-	private Boolean checked;
+	private transient Boolean checked;
 	
 	@Column(name="done")
-	private Boolean done;
+	private transient Boolean done;
 	
 	private Set<Product> products = new HashSet<Product>(0);
 
